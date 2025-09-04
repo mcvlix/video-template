@@ -1,5 +1,28 @@
 export const projects = [
     {
+        title: "What Am I Studying Now?",
+        summary: "The textbooks, resources, courses, and projects I am currently digesting...",
+        description: `
+            In advance to my M.S. program in the Fall of 2026, I am currently working through a few books to deepen my knowledge. This includes readings such as:
+            <br /><br />
+
+            • Advances in Financial Machine Learning - Marcos López de Prado                     <br />
+            • Stochastic Calculus for Finance II: Continuous Time Models - Steven E. Shreve      <br />
+            • Programming Massively Parallel Processors - David B. Kirk, Wen-mei W. Hwu          <br /> <br />
+
+            I would also like to draw attention to 
+            <a href="https://www.youtube.com/channel/UCJgIbYl6C5no72a0NUAPcTA" 
+               title="GPU MODE - A GPU reading group and community"
+               style="text-decoration: underline; color: #76b900;">
+            GPU MODE</a>,
+            an online reading group and community concerned with GPU (particularly CUDA) programming. While I have not directly contributed to this community, I follow their lectures as it is much younger and extremely industry involved.
+
+        `,
+        tech: "Informative • Resources • Books",
+        date: "Today",
+        gradient: "linear-gradient(to left, #90d5ff, #ffffff)"
+    },
+    {
         title: "Dini's Surface Visualization",
         summary: `
             A JavaScript visualization of a parametric curve known as Dini's surface...
@@ -52,29 +75,29 @@ export const projects = [
         date: "2024",
         gradient: "linear-gradient(to left, #00d0ff, #e52e71)"
     },
-    {
-        title: "Fractal Geometry Explorer",
-        summary: "Interactive web application exploring complex mathematical structures...",
-        description: `
-        Interactive app exploring Mandelbrot and Julia sets. 
-        Inline math: iteration formula \\( z_{n+1} = z_n^2 + c \\). 
-        Supports real-time parameter adjustment and WebGL high-precision rendering.
-            `,
-        tech: "JavaScript • WebGL • Complex Analysis",
-        date: "2024",
-        gradient: "linear-gradient(to left, #ff8a00, #5fe52e)"
-    },
-    {
-        title: "Quantum Circuit Simulator",
-        summary: "GPU-accelerated quantum circuit simulation framework...",
-        description: `
-        GPU-accelerated quantum circuit simulator for 30+ qubits. 
-        Implements gates, measurement, and visualization. 
-        Inline math example: qubit state \\( |\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle \\). 
-        Useful for education and research with performance optimization.
-            `,
-        tech: "CUDA • C++ • Quantum Computing",
-        date: "2024",
-        gradient: "radial-gradient(#797979, #b6b6b6)"
-    }
+    // {
+    //     title: "Fractal Geometry Explorer",
+    //     summary: "Interactive web application exploring complex mathematical structures...",
+    //     description: `
+    //     Interactive app exploring Mandelbrot and Julia sets. 
+    //     Inline math: iteration formula \\( z_{n+1} = z_n^2 + c \\). 
+    //     Supports real-time parameter adjustment and WebGL high-precision rendering.
+    //         `,
+    //     tech: "JavaScript • WebGL • Complex Analysis",
+    //     date: "2024",
+    //     gradient: "linear-gradient(to left, #ff8a00, #5fe52e)"
+    // },
+    // {
+    //     title: "Quantum Circuit Simulator",
+    //     summary: "GPU-accelerated quantum circuit simulation framework...",
+    //     description: `
+    //     GPU-accelerated quantum circuit simulator for 30+ qubits. 
+    //     Implements gates, measurement, and visualization. 
+    //     Inline math example: qubit state \\( |\\psi\\rangle = \\alpha|0\\rangle + \\beta|1\\rangle \\). 
+    //     Useful for education and research with performance optimization.
+    //         `,
+    //     tech: "CUDA • C++ • Quantum Computing",
+    //     date: "2024",
+    //     gradient: "radial-gradient(#797979, #b6b6b6)"
+    // }
 ];

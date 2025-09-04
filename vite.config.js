@@ -4,7 +4,7 @@ const isCodeSandbox = 'SANDBOX_URL' in process.env || 'CODESANDBOX_HOST' in proc
 
 export default {
     root: './',
-    publicDir: '../static/',
+    publicDir: './static/',
     base: './',
     server: {
       host: true,
@@ -18,5 +18,4 @@ export default {
     plugins: [
       glsl()
     ]
-  }
-  
+}
