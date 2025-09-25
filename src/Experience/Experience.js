@@ -97,7 +97,19 @@ export default class Experience {
   
     this.scene.traverse((child) =>{
       if (child.name === "Dini") {
-        this.dini = child
+        this.dini = child;
+        // Move dini to foreground by setting high renderOrder and disabling depth test
+        this.dini.renderOrder = 999;
+        this.dini.material.depthTest = false;
+        this.dini.material.depthWrite = false;
+        
+        // Optional: Make it always face camera
+        this.dini.lookAt(this.camera.instance.position);
+        console.log("Found Dini object:", this.dini);
+      }
+      if (child.name === "Floor") {
+        this.floor = child;
+        console.log("Found Floor object:", this.floor);
       }
     })
     
@@ -109,6 +121,10 @@ export default class Experience {
     this.targetRotationSpeed = -0.0001; // Slow target speed
     this.initRadius = 10;
     this.radius = this.initRadius;
+    
+    // Separate rotation angle for floor
+    this.floorAngle = 0;
+    this.floorRotationSpeed = -0.0001; // Increased speed to make rotation more visible
   }
 
   resize() {
@@ -132,22 +148,68 @@ export default class Experience {
     // Ease-out cubic
     const easeOutCubic = 1 - Math.pow(1 - progress, 3);
 
-    // Rotation speed this frame
+    // Rotation speed this frame for dini (if you still want it to rotate)
     const speed = this.initialRotationSpeed +
       (this.targetRotationSpeed - this.initialRotationSpeed) * easeOutCubic;
 
     // Accumulate angle (use delta time, not elapsed)
-    this.angle += speed * this.time.delta; // if delta is ms, divide by 1000
-
-    const offset = new THREE.Vector3(
-      Math.cos(this.angle) * this.radius, // X
-      this.camera.instance.position.y,    // keep current camera height
-      Math.sin(this.angle) * this.radius  // Z
-    );
+    this.angle += speed * this.time.delta;
     
-    // Set camera position relative to target
-    this.camera.instance.position.copy(this.camera.controls.target).add(offset);
-    this.camera.instance.lookAt(this.camera.controls.target);
+    // Floor rotation (constant speed)
+    this.floorAngle += this.floorRotationSpeed * this.time.delta;
+
+    // Apply rotations
+    if (this.dini) {
+      // Desired screen position in NDC (x, y, z)
+      const ndcPos = new THREE.Vector3(0.6, -0.2, 0); // 0.8 = near right edge, y=0 = middle
+    
+      // Unproject from NDC to world space
+      ndcPos.unproject(this.camera.instance);
+    
+      // Move Dini toward the camera direction so it’s always visible
+      const dir = ndcPos.sub(this.camera.instance.position).normalize();
+      const distance = 5; // how far in front of the camera
+      const worldPos = this.camera.instance.position.clone().add(dir.multiplyScalar(distance));
+    
+      // Apply position
+      this.dini.position.copy(worldPos);
+    
+      // Scale relative to camera distance
+      const baseScale = 0.4;
+  const scaleFactor = baseScale * Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      this.dini.scale.setScalar(scaleFactor);
+    
+      // Optionally face camera
+      this.dini.lookAt(this.camera.instance.position);
+    }
+    
+    
+    if (this.floor) {
+      this.floor.rotation.z = this.floorAngle;
+      // Debug: Log rotation value occasionally
+      if (Math.floor(this.time.elapsed) % 2 === 0 && Math.floor(this.time.elapsed * 10) % 10 === 0) {
+        console.log("Floor rotation:", this.floorAngle);
+      }
+    } else {
+      // Try to find floor if not found yet
+      this.scene.traverse((child) => {
+        if (child.name === "Floor" || (child.isMesh && child.geometry.type === "PlaneGeometry")) {
+          this.floor = child;
+          console.log("Floor found via traversal:", this.floor);
+        }
+      });
+    }
+
+    // const offset = new THREE.Vector3(
+    //   Math.cos(this.angle) * this.radius, // X
+    //   this.camera.instance.position.y,    // keep current camera height
+    //   Math.sin(this.angle) * this.radius  // Z
+    // );
+    
+    // // Set camera position relative to target
+    // this.camera.instance.position.copy(this.camera.controls.target).add(offset);
+    // this.camera.instance.lookAt(this.camera.controls.target);
+
 
 
     //change this to be controller if controller is active

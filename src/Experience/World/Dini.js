@@ -25,7 +25,7 @@ export default class Dini
 
     setGeometry()
     {
-        this.geometry = new THREE.BoxGeometry(1,1,1,100, 20, 200)
+        this.geometry = new THREE.BoxGeometry(1,1,1,100, 20, 100)
         // this.geometry = new THREE.PlaneGeometry(1,1,100,100)
     }
 
@@ -45,7 +45,7 @@ export default class Dini
                 // animSpeed: {value: 10},
                 // 
                 width: {value: 2.0},
-                totalRadians: {value: 6.0},
+                totalRadians: {value: 5.0},
             },
             wireframe: true,
             transparent: false
@@ -59,7 +59,7 @@ export default class Dini
         this.mesh.name = this.name
         this.scene.add(this.mesh)
 
-        this.mesh.scale.y = 1.0
+        this.mesh.scale.y = 1.0;
         this.mesh.position.y = -1
     }
     

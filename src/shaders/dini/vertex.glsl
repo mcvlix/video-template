@@ -26,9 +26,9 @@ void main()
     float x = diniParams.x * cos(diniParams.z) * sin(diniParams.w);
     float z = diniParams.x * sin(diniParams.z) * sin(diniParams.w);
     float y = 
-        (cos(diniParams.w) 
+        ((cos(diniParams.w) 
         + (log(tan(diniParams.w * 0.5)))/log(e)) 
-        + diniParams.y * diniParams.z;
+        + diniParams.y * diniParams.z)* 0.8;
 
     // Final position
     gl_Position = projectionMatrix * modelViewMatrix * vec4(x, y, z, 1.0);

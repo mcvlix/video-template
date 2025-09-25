@@ -51,11 +51,10 @@ html, body {
 .main-box {
     position: absolute;
     z-index: 1;
-    top: 1%;
-    left: 2px;
-    width: auto;
-    max-width: 600px;
-    height: auto;
+    top: 25%;
+    left: 40px;
+    width: 60%;
+    /* height: 65%; */
     min-height: 12%;
     padding: 10px;
     padding-bottom: 25px;
@@ -78,24 +77,31 @@ html, body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.name {
+.main-title {
+    padding-left: 10px;
+    width: auto;
+    font-family: 'Geist', sans-serif;
+    font-size: 4.0rem;
+    letter-spacing: 2.0px;
+    font-weight: lighter;
+}
+.slide-title {
     padding-top: 10px;
     padding-left: 5px;
     width: auto;
     font-family: 'Geist', sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 1.5px;
+    font-size: 2.0rem;
+    letter-spacing: px;
     font-weight: lighter;
 }
 
-.subtitle {
-    letter-spacing: 1px;
-    flex: 1;
-    position: relative;
-    padding-top: 2px;
+.subtitle-border {
+    padding-top: 10px;
     padding-left: 10px;
-    padding-bottom: 10px;
-    font-size: smaller;
+    width: auto;
+    font-family: 'Geist', sans-serif;
+    font-size: 3.0rem;
+    letter-spacing: 1.5px;
     font-weight: lighter;
     text-overflow: ellipsis;
     white-space: wrap;
@@ -117,13 +123,14 @@ html, body {
     padding-left: 6px;
     flex: 1;
     position: relative;
-    font-size: small;
+    font-family: 'Geist', sans-serif;
+    font-size: xx-large;
     font-weight: lighter;
     text-overflow: ellipsis;
     white-space: wrap;
     line-height: 1.4;
     margin-bottom: 20px;
-    letter-spacing: 0.75px;
+    letter-spacing: 1.25px;
 }
 
 .toggle-hint {
@@ -208,7 +215,7 @@ html, body {
     margin-bottom: 10px;
 }
 
-.project-display-tech {
+.project-display-tags {
     flex-shrink: 0;
     position: relative;
     padding: 5px;
@@ -275,7 +282,7 @@ html, body {
     width: auto;
     height: auto;
     padding: 10px;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
     margin: 20px;
     margin-bottom: 15px;
     border: 2px solid #222;
@@ -320,11 +327,11 @@ html, body {
     margin-bottom: 8px;
 }
 
-.project-item-tech {
+.project-item-tags {
     flex-shrink: 0;
     position: relative;
     padding: 5px;
-    bottom: 5px;
+    bottom: 0px;
     font-size: smaller;
     opacity: 0.5;
     font-style: italic;
@@ -434,3 +441,4 @@ a {
         padding: 10px;
     }
 }
+

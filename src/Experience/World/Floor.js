@@ -10,16 +10,14 @@ export default class Floor{
         // this.resources = this.experience.resources
         this.debug = this.experience.debug
 
-        this.geometry = new THREE.PlaneGeometry( 50, 50 );
+        this.geometry = new THREE.PlaneGeometry( 500, 500 );
         this.horizontalGridMaterial = new THREE.ShaderMaterial({
             vertexShader: horizontalGridVertexShader,
             fragmentShader: horizontalGridFragmentShader,
             transparent: true,
         });
         this.floorPlane = new THREE.Mesh( this.geometry, this.horizontalGridMaterial );
-        this.floorPlane.x -= 15
-        this.floorPlane.position.y = -5
-        this.floorPlane.z -=15
+        this.floorPlane.position.y = -3
         this.floorPlane.rotation.x -= Math.PI/2;
         this.scene.add( this.floorPlane );
     }

@@ -20,7 +20,8 @@ function populateProjectSlider() {
         projectItem.innerHTML = `
             <h3 class="project-item-title">${project.title}</h3>
             <p class="project-item-preview">${project.summary}</p>
-            <p class="project-item-tech">${project.tech}</p>
+            <p class="project-item-tags">${project.tags}</p>
+            <p class="project-display-date">${project.date}</div>
         `;
         
         // Apply gradient to the title's border
@@ -86,7 +87,7 @@ function displayProject(projectIndex) {
     projectDisplay.innerHTML = `
         <div class="project-display-title">${project.title}</div>
         <div class="project-display-description">${project.description}</div>
-        <div class="project-display-tech">${project.tech}</div>
+        <div class="project-display-tags">${project.tags}</div>
         <div class="project-display-date">${project.date}</div>
     `;
 

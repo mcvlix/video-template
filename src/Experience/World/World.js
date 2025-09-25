@@ -29,7 +29,6 @@ export default class World {
   }
   update() {
     // // Bug in the ready function
-    
       this.dini.update();
     
   }
