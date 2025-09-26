@@ -161,7 +161,7 @@ export default class Experience {
     // Apply rotations
     if (this.dini) {
       // Desired screen position in NDC (x, y, z)
-      const ndcPos = new THREE.Vector3(0.6, -0.2, 0); // 0.8 = near right edge, y=0 = middle
+      const ndcPos = new THREE.Vector3(0.65, -0.2, 0); // 0.8 = near right edge, y=0 = middle
     
       // Unproject from NDC to world space
       ndcPos.unproject(this.camera.instance);
@@ -175,8 +175,8 @@ export default class Experience {
       this.dini.position.copy(worldPos);
     
       // Scale relative to camera distance
-      const baseScale = 0.4;
-  const scaleFactor = baseScale * Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      const baseScale = 0.3;
+  const scaleFactor = baseScale * Math.max((window.innerWidth / 1920) * 1.2, 1);
       this.dini.scale.setScalar(scaleFactor);
     
       // Optionally face camera
@@ -188,14 +188,14 @@ export default class Experience {
       this.floor.rotation.z = this.floorAngle;
       // Debug: Log rotation value occasionally
       if (Math.floor(this.time.elapsed) % 2 === 0 && Math.floor(this.time.elapsed * 10) % 10 === 0) {
-        console.log("Floor rotation:", this.floorAngle);
+        // console.log("Floor rotation:", this.floorAngle);
       }
     } else {
       // Try to find floor if not found yet
       this.scene.traverse((child) => {
         if (child.name === "Floor" || (child.isMesh && child.geometry.type === "PlaneGeometry")) {
           this.floor = child;
-          console.log("Floor found via traversal:", this.floor);
+          // console.log("Floor found via traversal:", this.floor);
         }
       });
     }
